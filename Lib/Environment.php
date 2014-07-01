@@ -20,7 +20,7 @@ class Environment {
 
 /**
  * Flag
- * @var booleand
+ * @var boolean
  */
 	private static $init = false;
 
