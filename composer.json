@@ -1,0 +1,21 @@
+{
+	"name": "quest/cakephp-environment",
+	"type": "cakephp-environment",
+	"description": "Environments Plugin for CakePHP",
+	"keywords": ["cakephp","utility","environments"],
+	"homepage": "http://victorsanmartin.com",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Victor San Martín",
+			"homepage": "http://twitter.com/questchile"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/quest/cakephp-environment/issues",
+		"source": "https://github.com/quest/cakephp-environment"
+	},
+	"require": {
+		"composer/installers": "*"
+	}
+}
