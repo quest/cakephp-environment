@@ -14,6 +14,8 @@
 /**
  * Example file for the configurations
  * If you need modified this file, create you own file at app/Config/
+ *
+ * DO NOT MODIFIED THIS FILE
  */
 
 
