@@ -14,7 +14,11 @@
 /**
  * Bootstrap file
  *
- * Import Lib and init class
+ * Import Lib
  */
-App::import('Environment.Lib', 'Environment');
-Environment::init();
+	App::import('Environment.Lib', 'Environment');
+
+/**
+ * Init Environment class
+ */
+	Environment::init();
