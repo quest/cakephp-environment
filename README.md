@@ -1,4 +1,4 @@
-# Environment plugin for CaePHP #
+# Environment Plugin for CakePHP #
 
 for CakePHP 2.x
 
