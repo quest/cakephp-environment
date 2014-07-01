@@ -22,13 +22,13 @@ class Environment {
  * Flag
  * @var boolean
  */
-	private static $init = false;
+	private static $_init = false;
 
 /**
  * Default environment
  * @var string
  */
-	private static $env = 'production';
+	private static $_env = 'production';
 
 /**
  * Detect environment function
@@ -36,7 +36,7 @@ class Environment {
  * @return boolean
  */
 	public static function init() {
-		if (self::$init) {
+		if (self::$_init) {
 			return true;
 		}
 
@@ -51,9 +51,9 @@ class Environment {
 			}
 		}
 
-		self::$env = $environment;
+		self::$_env = $environment;
 
-		return self::$init = true;
+		return self::$_init = true;
 	}
 
 /**
@@ -63,14 +63,14 @@ class Environment {
  */
 	public static function get() {
 		Environment::init();
-		return self::$env;
+		return self::$_env;
 	}
 
 /**
  * Set Environment
  *
- * @param string $environment
- * @return  boolean
+ * @param string $environment Environment name
+ * @return boolean
  */
 	public static function set($environment = '') {
 		if (empty($environment)) {
@@ -78,7 +78,7 @@ class Environment {
 		}
 
 		Environment::init();
-		self::$env = $environment;
+		self::$_env = $environment;
 
 		$config = Configure::read('Environment.' . $environment);
 		if (!empty($config)) {
@@ -91,20 +91,20 @@ class Environment {
 /**
  * Method for validate environmente seted
  *
- * @param  string  $environment
+ * @param string $environment Environment name
  * @return boolean
  */
 	public static function is($environment = '') {
 		Environment::init();
-		return self::$env == $environment;
+		return self::$_env == $environment;
 	}
 
 /**
  * Set configuration key
  *
- * @param  string $key
- * @param  string $value
- * @param  string $environment
+ * @param string|array $key Key name or array of keys
+ * @param string $value Value of key
+ * @param string $environment Environment name
  * @return boolean
  */
 	public static function write($key = '', $value = '', $environment = '') {
@@ -132,8 +132,8 @@ class Environment {
 /**
  * Read configuration key
  *
- * @param  string $key
- * @param  string $environment
+ * @param string $key Key name
+ * @param string $environment Environment name
  * @return false|string false or value
  */
 	public static function read($key = '', $environment = '') {
@@ -144,10 +144,10 @@ class Environment {
 		}
 
 		$value = Configure::read('Environment.' . $environment . '.' . $key);
-        if ($value !== null) {
-            return $value;
-        }
+		if ($value !== null) {
+			return $value;
+		}
 
-        return false;
+		return false;
 	}
 }

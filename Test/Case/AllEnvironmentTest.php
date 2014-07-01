@@ -7,6 +7,7 @@
  * @package  Environment.Test.Case
  */
 class AllEnvironmentTests extends PHPUnit_Framework_TestSuite {
+
 /**
  * Suite define the tests for this suite
  *
