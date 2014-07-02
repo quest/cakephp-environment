@@ -22,13 +22,13 @@ class Environment {
  * Flag
  * @var boolean
  */
-	private static $_init = false;
+	private static $__init = false;
 
 /**
  * Default environment
  * @var string
  */
-	private static $_env = 'production';
+	private static $__env = 'production';
 
 /**
  * Detect environment function
@@ -36,7 +36,7 @@ class Environment {
  * @return boolean
  */
 	public static function init() {
-		if (self::$_init) {
+		if (self::$__init) {
 			return true;
 		}
 
@@ -51,9 +51,9 @@ class Environment {
 			}
 		}
 
-		self::$_env = $environment;
+		self::$__env = $environment;
 
-		return self::$_init = true;
+		return self::$__init = true;
 	}
 
 /**
@@ -63,7 +63,7 @@ class Environment {
  */
 	public static function get() {
 		Environment::init();
-		return self::$_env;
+		return self::$__env;
 	}
 
 /**
@@ -78,7 +78,7 @@ class Environment {
 		}
 
 		Environment::init();
-		self::$_env = $environment;
+		self::$__env = $environment;
 
 		$config = Configure::read('Environment.' . $environment);
 		if (!empty($config)) {
@@ -96,7 +96,7 @@ class Environment {
  */
 	public static function is($environment = '') {
 		Environment::init();
-		return self::$_env == $environment;
+		return self::$__env == $environment;
 	}
 
 /**
