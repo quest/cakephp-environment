@@ -89,5 +89,4 @@ class EnvironmentTest extends CakeTestCase {
 		$this->assertEquals(Configure::read('Security.salt'), '67783jd9HKkjkhhkferwQhhPbkjb987987bJKhjvdskhJK');
 
 	}
-
 }
