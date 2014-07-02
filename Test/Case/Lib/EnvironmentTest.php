@@ -34,6 +34,10 @@ class EnvironmentTest extends CakeTestCase {
 	}
 
 	public function testIs() {
-		$this->assertEquals('hola', 'hola');
+		Environment::set('development');
+		$this->assertTrue(Environment::is('development'));
+
+		Environment::set('production');
+		$this->assertTrue(Environment::is('production'));
 	}
 }
