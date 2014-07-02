@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/quest/cakephp-environment.svg?branch=dev)](https://travis-ci.org/quest/cakephp-environment)
+
 # Environment Plugin for CakePHP #
 
 for CakePHP 2.x
