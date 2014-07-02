@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>cakephp-environment by quest</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>cakephp-environment</h1>
+        <p>Environment Plugin for CakePHP</p>
+
+        <p class="view"><a href="https://github.com/quest/cakephp-environment">View the Project on GitHub <small>quest/cakephp-environment</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/quest/cakephp-environment/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/quest/cakephp-environment/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/quest/cakephp-environment">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="environment-plugin-for-cakephp" class="anchor" href="#environment-plugin-for-cakephp"><span class="octicon octicon-link"></span></a>Environment Plugin for CakePHP</h1>
+
+<p>for CakePHP 2.x</p>
+
+<h2>
+<a name="requirement" class="anchor" href="#requirement"><span class="octicon octicon-link"></span></a>Requirement</h2>
+
+<ul>
+<li>PHP version: PHP 5.2+</li>
+<li>CakePHP version: 2.x Stable</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ul>
+<li>Clone/Copy the files in this diectory into <code>app/Plugin/Environment</code>
+</li>
+<li>Ensure the plugin is loaded in <code>app/Config/bootstrap.php</code> by calling <code>CakePlugin::load('Environment', array('bootstrap' =&gt; true))</code>
+</li>
+</ul><h3>
+<a name="using-composer" class="anchor" href="#using-composer"><span class="octicon octicon-link"></span></a>Using Composer</h3>
+
+<p>Add the plugin to your project's <code>composer.json</code> - something like this:</p>
+
+<pre lang="composer"><code>    {
+        "require": {
+            "quest/cakephp-environment": "master"
+        }
+    }
+</code></pre>
+
+<p>Because this plugin has the type <code>cakephp-plugin</code> set in its own <code>composer.json</code>, Composer will install it inside your <code>/Plugins</code> directory, rather than in the usual vendors file. It is recommended that you add <code>/Plugins/Environment</code> to your .gitignore file. (Why? <a href="http://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md">read this</a>.)</p>
+
+<h3>
+<a name="manual" class="anchor" href="#manual"><span class="octicon octicon-link"></span></a>Manual</h3>
+
+<ul>
+<li>Download this: <a href="http://github.com/quest/cakephp-environment/zipball/master">http://github.com/quest/cakephp-environment/zipball/master</a>
+</li>
+<li>Unzip that download.</li>
+<li>Copy the resulting folder to <code>app/Plugin</code>
+</li>
+<li>Rename the folder you just copied to <code>Environment</code>
+</li>
+</ul><h3>
+<a name="git-submodule" class="anchor" href="#git-submodule"><span class="octicon octicon-link"></span></a>GIT Submodule</h3>
+
+<p>In your app directory type:</p>
+
+<div class="highlight highlight-bash"><pre>  git submodule add -b master git://github.com/quest/cakephp-environment.git Plugin/Environment
+  git submodule init
+  git submodule update
+</pre></div>
+
+<h3>
+<a name="git-clone" class="anchor" href="#git-clone"><span class="octicon octicon-link"></span></a>GIT Clone</h3>
+
+<p>In your <code>Plugin</code> directory type:</p>
+
+<div class="highlight highlight-bash"><pre>    git clone -b master git://github.com/quest/cakephp-environment.git Environment
+</pre></div>
+
+<h2>
+<a name="enable-plugin" class="anchor" href="#enable-plugin"><span class="octicon octicon-link"></span></a>Enable plugin</h2>
+
+<p>In 2.0 you need to enable the plugin in your <code>app/Config/bootstrap.php</code> file:</p>
+
+<div class="highlight highlight-php"><pre>    <span class="nx">CakePlugin</span><span class="o">::</span><span class="na">load</span><span class="p">(</span><span class="s1">'Environment'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'bootstrap'</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">));</span>
+</pre></div>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Create file <code>app/Config/env.php</code> with this example content.</p>
+
+<div class="highlight highlight-php"><pre>    <span class="sd">/**</span>
+<span class="sd">     * Domains environments</span>
+<span class="sd">     * IMPORTANT: This lines on the top of the file</span>
+<span class="sd">     */</span>
+        <span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'Environment.domains'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">'development'</span> <span class="o">=&gt;</span> <span class="s1">'.*'</span><span class="p">,</span>
+            <span class="s1">'production'</span> <span class="o">=&gt;</span> <span class="s1">'^(.+\.)?mysite\.com$'</span>
+        <span class="p">));</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Development settings</span>
+<span class="sd">     */</span>
+        <span class="nx">Environment</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">'debug'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">'Security.salt'</span> <span class="o">=&gt;</span> <span class="s1">'6978hjkhKjkhskjhd698KGNSLdsDLsdKSAsdf8778sdfg'</span><span class="p">,</span>
+            <span class="s1">'Security.cipherSeed'</span> <span class="o">=&gt;</span> <span class="s1">'57283694289374902834892039823756894'</span>
+        <span class="p">),</span> <span class="s1">'development'</span><span class="p">);</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Production settings</span>
+<span class="sd">     */</span>
+        <span class="nx">Environment</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">'debug'</span> <span class="o">=&gt;</span> <span class="mi">0</span>
+        <span class="p">),</span> <span class="s1">'production'</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="environment-detection" class="anchor" href="#environment-detection"><span class="octicon octicon-link"></span></a>Environment Detection</h3>
+
+<p>In order to detect the project environment and apply their settings, use the application hostname, just like this:</p>
+
+<div class="highlight highlight-php"><pre>    <span class="nx">Configure</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'Environment.domains'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'development'</span> <span class="o">=&gt;</span> <span class="s1">'^myapp\.local$'</span><span class="p">,</span>
+        <span class="s1">'production'</span> <span class="o">=&gt;</span> <span class="s1">'^mycapp\.com$'</span>
+    <span class="p">));</span>
+</pre></div>
+
+<p>You must use regex to define the hostname. You can create many environments as you want.</p>
+
+<h3>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods</h3>
+
+<h4>
+<a name="environmentget" class="anchor" href="#environmentget"><span class="octicon octicon-link"></span></a>Environment::get()</h4>
+
+<p>Get the current environment depending on hostname requested:</p>
+
+<div class="highlight highlight-php"><pre>    <span class="k">echo</span> <span class="nx">Environment</span><span class="o">::</span><span class="na">get</span><span class="p">();</span> <span class="c1">// print 'development' text</span>
+</pre></div>
+
+<h4>
+<a name="environmentsetstring-environment" class="anchor" href="#environmentsetstring-environment"><span class="octicon octicon-link"></span></a>Environment::set(string $environment)</h4>
+
+<p>Avoid set the environment based on hostname request, by using <code>set()</code> method. It will overwrite any other environment previously settled.</p>
+
+<div class="highlight highlight-php"><pre>    <span class="nx">Environment</span><span class="o">::</span><span class="na">set</span><span class="p">(</span><span class="s1">'testing'</span><span class="p">);</span> <span class="c1">// true</span>
+</pre></div>
+
+<h4>
+<a name="environmentisstring-environment" class="anchor" href="#environmentisstring-environment"><span class="octicon octicon-link"></span></a>Environment::is(string $environment)</h4>
+
+<p>Use this method to check the current/working environment.</p>
+
+<div class="highlight highlight-php"><pre>    <span class="k">if</span> <span class="p">(</span><span class="nx">Environment</span><span class="o">::</span><span class="na">is</span><span class="p">(</span><span class="s1">'development'</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">'this is development'</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">'this is '</span> <span class="o">.</span> <span class="nx">Environment</span><span class="o">::</span><span class="na">get</span><span class="p">();</span>
+    <span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="environmentwrite" class="anchor" href="#environmentwrite"><span class="octicon octicon-link"></span></a>Environment::write()</h4>
+
+<p>You can write environment settings by using the <code>write()</code> method in two ways:</p>
+
+<p>Multiple</p>
+
+<div class="highlight highlight-php"><pre>    <span class="nx">Environment</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+        <span class="s1">'debug'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s1">'database'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">'login'</span> <span class="o">=&gt;</span> <span class="s1">'root'</span><span class="p">,</span>
+            <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="s1">'localhost'</span><span class="p">,</span>
+            <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">),</span> <span class="s1">'development'</span><span class="p">);</span>
+</pre></div>
+
+<p>Single</p>
+
+<div class="highlight highlight-php"><pre>    <span class="nx">Environment</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="s1">'debug'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'production'</span><span class="p">);</span>
+</pre></div>
+
+<h4>
+<a name="environmentread" class="anchor" href="#environmentread"><span class="octicon octicon-link"></span></a>Environment::read()</h4>
+
+<p>Read environment settings by using the <code>read()</code> method:</p>
+
+<ul>
+<li>$key: Key to find</li>
+<li>$environment: Optional — Environment scope</li>
+</ul><div class="highlight highlight-php"><pre>    <span class="c1">// databases.php</span>
+    <span class="k">class</span> <span class="nc">DATABASE_CONFIG</span> <span class="p">{</span>
+
+        <span class="k">public</span> <span class="nv">$default</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s1">'datasource'</span> <span class="o">=&gt;</span> <span class="s1">'Database/Mysql'</span><span class="p">,</span>
+            <span class="s1">'persistent'</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+            <span class="s1">'host'</span> <span class="o">=&gt;</span> <span class="nx">Environment</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">'database.host'</span><span class="p">),</span>
+            <span class="s1">'login'</span> <span class="o">=&gt;</span> <span class="nx">Environment</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">'database.login'</span><span class="p">),</span>
+            <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="nx">Environment</span><span class="o">::</span><span class="na">read</span><span class="p">(</span><span class="s1">'database.password'</span><span class="p">),</span>
+            <span class="s1">'database'</span> <span class="o">=&gt;</span> <span class="s1">'database_name'</span><span class="p">,</span>
+            <span class="s1">'prefix'</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+            <span class="s1">'encoding'</span> <span class="o">=&gt;</span> <span class="s1">'utf8'</span><span class="p">,</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+
+<p><code>Environment::write()</code> also can be used to update or modify Cake's <code>app/Config/core.php</code> file settings. For example:</p>
+
+<div class="highlight highlight-php"><pre>    <span class="sd">/**</span>
+<span class="sd">     * Development settings</span>
+<span class="sd">     */</span>
+        <span class="nx">Environment</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">'debug'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">'Security.salt'</span> <span class="o">=&gt;</span> <span class="s1">'6978hjkhKjkhskjhd698KGNSLdsDLsdKSAsdf8778sdfg'</span><span class="p">,</span>
+            <span class="s1">'Security.cipherSeed'</span> <span class="o">=&gt;</span> <span class="s1">'57283694289374902834892039823756894'</span>
+        <span class="p">),</span> <span class="s1">'development'</span><span class="p">);</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Production settings</span>
+<span class="sd">     */</span>
+        <span class="nx">Environment</span><span class="o">::</span><span class="na">write</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+            <span class="s1">'debug'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">'Security.salt'</span> <span class="o">=&gt;</span> <span class="s1">'6978hjkhKjkhskjhd698KGNSLdsDLsdKSAsdf8778sdfg'</span><span class="p">,</span>
+            <span class="s1">'Security.cipherSeed'</span> <span class="o">=&gt;</span> <span class="s1">'57283694289374902834892039823756894'</span>
+        <span class="p">),</span> <span class="s1">'production'</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<h2>
+<a name="support" class="anchor" href="#support"><span class="octicon octicon-link"></span></a>Support</h2>
+
+<p>To report bugs or request features, please visit the <a href="https://github.com/quest/cakephp-environment/issues">Issue Tracker</a>.</p>
+
+<h2>
+<a name="contributing-to-this-plugin" class="anchor" href="#contributing-to-this-plugin"><span class="octicon octicon-link"></span></a>Contributing to this Plugin</h2>
+
+<p>Please feel free to contribute to the plugin with new issues, requests, unit tests and code fixes or new features. If you want to contribute some code, create a feature branch from develop, and send us your pull request. Unit tests for new features and issues detected are mandatory to keep quality high.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright 2014, <a href="http://twitter.com/questchile">Victor San Martín</a></p>
+
+<p>Licensed under <a href="http://www.opensource.org/licenses/mit-license.php">The MIT License</a><br>
+Redistributions of files must retain the above copyright notice.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/quest">quest</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
