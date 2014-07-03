@@ -30,7 +30,7 @@
  *
  * Overwrite at app/Config/env.php
  */
-	Configure::write('Environment.domains', array(
+	Configure::write('Environment.domains-default', array(
 		'development' => '.*',
 		'production' => '^(.+\.)?mysite\.com$'
 	));
