@@ -40,14 +40,19 @@ class Environment {
 			return true;
 		}
 
-		Configure::load('Environment.env', 'default');
+		Configure::load('Environment.env');
 		Config('env');
 
 		$environment = 'production';
+
 		$domains = Configure::read('Environment.domains');
+		if (empty($domains)) {
+			$domains = Configure::read('Environment.domains-default');
+		}
 		foreach ($domains as $env => $domain) {
 			if (preg_match('/' . $domain . '/', env('HTTP_HOST'))) {
 				$environment = $env;
+				break;
 			}
 		}
 
