@@ -1,6 +1,6 @@
 {
 	"name": "quest/cakephp-environment",
-	"type": "cakephp-environment",
+	"type": "cakephp-plugin",
 	"description": "Environments Plugin for CakePHP",
 	"keywords": ["cakephp","utility","environments"],
 	"homepage": "http://victorsanmartin.com",
